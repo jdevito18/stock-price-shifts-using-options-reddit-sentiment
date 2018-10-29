@@ -11,13 +11,15 @@ secondDateList = dateList[1:]
 
 redditPosts = {}
 for i in range(0, len(secondDateList)):
+    if i == 1:
+        print(i)
     if i % 100 == True:
         print(str(i-1) + 'days have been downloaded so far')
         with open('titleData.json', 'w') as fp:
             json.dump(redditPosts, fp)
     before = dateList[i]
     after = secondDateList[i]
-    url = "https://api.pushshift.io/reddit/search?subreddit=finance&size=1000&before=" + before + '&after=' + after + '&filter=title'
+    url = "https://api.pushshift.io/reddit/submission/search?subreddit=finance&size=1000&before=" + before + '&after=' + after 
     try:
         r = requests.get(url)
     except:
