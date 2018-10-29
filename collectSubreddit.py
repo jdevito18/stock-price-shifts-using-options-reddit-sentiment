@@ -17,7 +17,7 @@ for i in range(0, len(secondDateList)):
             json.dump(redditPosts, fp)
     before = dateList[i]
     after = secondDateList[i]
-    url = "https://api.pushshift.io/reddit/search?subreddit=finance&size=1000&before=" + before + '&after=' + after
+    url = "https://api.pushshift.io/reddit/search?subreddit=finance&size=1000&before=" + before + '&after=' + after + '&filter=title'
     try:
         r = requests.get(url)
     except:
